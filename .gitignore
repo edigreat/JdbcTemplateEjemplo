@@ -10,6 +10,7 @@ target/
 *.war
 *.ear
 *.db
+*~
 ######################
 # Windows
 ######################
@@ -40,7 +41,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
-
+.springBeans
 # Locally stored "Eclipse launch configurations"
 *.launch
 # CDT-specific

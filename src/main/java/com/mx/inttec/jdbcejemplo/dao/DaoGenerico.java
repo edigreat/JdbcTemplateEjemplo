@@ -7,7 +7,7 @@ public interface DaoGenerico <T, PK extends Serializable> {
 	
 	void create(T newInstance);
 	void update(T newInstance);
-	void read(PK pk);
+	T read(PK pk);
 	void delete(T newInstancie);
 	List<T> findAll();
 

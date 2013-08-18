@@ -1,4 +1,4 @@
-package com.mx.inttec.jdbcejemplo.dao.impl;
+package com.mx.inttec.jdbcejemplo.admambulancias.integracion.dao.impl;
 
 import java.sql.Types;
 import java.util.HashMap;

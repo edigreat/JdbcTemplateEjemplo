@@ -1,5 +1,7 @@
 package com.mx.inttec.jdbcejemplo.admambulancias.integracion.servicios;
 
+import java.util.List;
+
 import com.mx.inttec.jdbcejemplo.admambulancias.integracion.dto.RegistroAmbulanciaDto;
 import com.mx.inttec.jdbcejemplo.admambulancias.integracion.dto.VMAdmAmbulanciaDto;
 import com.mx.inttec.jdbcejemplo.admambulancias.integracion.dto.VMRegSalidaAmbulanciaDto;
@@ -20,4 +22,8 @@ public interface AmbulanciasService {
 	 * @return consulta de altas registradas ambulancias
 	 */
 	public VMAdmAmbulanciaDto consultarAltasRegAmbulancia(String claveUnidad);
+	
+	public void insertarLlegadaLista(String claveUnidad,
+			List<RegistroAmbulanciaDto> registroAmbulanciaList);
+	
 }

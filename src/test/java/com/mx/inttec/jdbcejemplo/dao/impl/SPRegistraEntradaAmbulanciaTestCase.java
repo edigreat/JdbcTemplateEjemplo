@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.mx.inttec.jdbcejemplo.admambulancias.integracion.dao.impl.SPRegistraEntradaAmbulancia;
 import com.mx.inttec.jdbcejemplo.admambulancias.integracion.dto.RegistroAmbulanciaDto;
 
 @RunWith(SpringJUnit4ClassRunner.class)
