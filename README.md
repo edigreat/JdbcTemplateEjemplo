@@ -11,6 +11,6 @@ e instalar en el repositorio local
 mvn install:install-file -Dfile=mariadb-java-client-1.1.3.jar -DgroupId=org.mari
 adb.jdbc -DartifactId=mariadb-java-client -Dversion=1.1.3 -Dpackaging=jar
 
-Se puede usar sqldeveloper para mariadb
+Como ide para mariadb se puede usar el  workbench de mysql o sqldeveloper 
 
 http://ubuntulife.wordpress.com/2008/07/23/usando-sql-developer-para-conectar-con-mysql/
