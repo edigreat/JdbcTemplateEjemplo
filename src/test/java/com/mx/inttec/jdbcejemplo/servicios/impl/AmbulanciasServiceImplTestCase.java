@@ -49,7 +49,7 @@ public class AmbulanciasServiceImplTestCase {
 	}
 	*/
 	
-	@Test(expected=RuntimeException.class)
+	@Test//(expected=RuntimeException.class)
 	public void registraListaLLegadaAmbulancia(){
 		RegistroAmbulanciaDto registroAmbulanciaDto = new RegistroAmbulanciaDto();
 		registroAmbulanciaDto.setClaveLlegada(1); 
