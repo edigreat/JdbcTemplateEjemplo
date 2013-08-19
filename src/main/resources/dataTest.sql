@@ -1,3 +1,11 @@
+--TODO:Verificar timestamp para versionamiento
+	  --Correspondencias de tipo de dato timestamp y java
+	  --Verificar funciones para dar formato a las fechas
+	  --Checar cursor como parametro de salida (parece que actualmente no es soportado)
+	  --Verificar el limite de los tipos de datos int
+	  	
+
+
 CREATE TABLE IF NOT EXISTS TablaEntidad (
     idTabla int(5) NOT NULL AUTO_INCREMENT,
     nombre varchar(20) DEFAULT NULL,
@@ -23,6 +31,11 @@ PRIMARY KEY(CVE_REGISTRO_AMBULANCIA)
 
 );
 
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `guardaRegistroAmbulancia`(
 	IN IN_CVE_REGISTRO_LLEGADA	INT,
@@ -38,9 +51,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `guardaRegistroAmbulancia`(
 )
 BEGIN
 
-	IF IN_CVE_EVENTO_AMBULANCIA = 0 THEN
+	IF IN_CVE_INGRESO = 0 THEN
 	SIGNAL SQLSTATE '45000'
-      SET MESSAGE_TEXT = 'An error occurred';
+      SET MESSAGE_TEXT = 'Excepcion lanzada desde mariadb';
 	END IF;
 	INSERT INTO IGT_REGISTRO_AMBULANCIA
 	( 
@@ -69,16 +82,65 @@ BEGIN
 		IN_CVE_USUARIO			,
 		NOW()
 	);
-END  
-    
-    
-    
+END
+
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
 DELIMITER $$
-CREATE PROCEDURE guardaEntidadPersistente(
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertEntidadPersistente`(
+        IN in_precio DECIMAL,
+        IN in_nombre VARCHAR(20)
+        )
+BEGIN
+
+    INSERT INTO TablaEntidad (precio, nombre) values
+    (in_precio,in_nombre);
+END
+    
+    
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `guardaEntidadPersistente`(
         IN in_nombre VARCHAR(20)
         )
 BEGIN
 
     INSERT INTO TablaEntidad (precio, nombre) values
     (0.0,in_nombre);
-END 
+END
+
+
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost`
+ PROCEDURE `getRegistrosAmbulancia`()
+BEGIN
+
+SELECT 
+
+CVE_REGISTRO_LLEGADA,
+		CVE_EVENTO_AMBULANCIA,
+		CVE_INGRESO	         ,
+		CVE_SOLICITUD	     ,
+		CVE_PRESUPUESTAL	 ,
+		REF_PLACAS_AMBULANCIA,
+		REF_ORIGEN_DESTINO  ,
+		REF_COMENTARIO	    ,
+		CVE_DELEGACION_IMSS ,
+		CVE_USUARIO			,	
+		FEC_EVENTO
+
+FROM 
+		IGT_REGISTRO_AMBULANCIA;
+END
